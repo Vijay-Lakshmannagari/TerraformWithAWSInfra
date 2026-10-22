@@ -1,0 +1,43 @@
+provider.tf
+-----------------------------
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.63.1"
+    }
+  }
+}
+
+provider "aws" {
+  region = "ap-south-1"
+}
+
+---------------------------------------
+
+main.tf
+--------------------------------
+resource "aws_s3_bucket" "example" {
+  bucket = var.mybucket
+
+}
+
+------------------------------------
+variables.tf
+------------------------------------
+variable "mybucket" {
+  type        = string
+  description = "This is my DevOps test bucket from TF"
+  default     = ""
+
+}
+
+----------------------------------------------
+
+terraform.tfvars
+
+----------------------------------------------
+
+mybucket = "tf-example-vkchma-s3-bkt"
+
+-------------------------------------------------
